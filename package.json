@@ -1,14 +1,16 @@
 {
   "name": "traveller-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src/server.ts",
     "gen": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "push": "drizzle-kit push",
     "pull": "drizzle-kit pull",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

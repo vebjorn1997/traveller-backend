@@ -13,6 +13,13 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
+# Optional: pass DATABASE_URL at build time so we can run migrations
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
+# Run migrations against the database (requires DATABASE_URL at build time)
+RUN npx drizzle-kit migrate
+
 # Production image
 FROM base AS runner
 WORKDIR /app

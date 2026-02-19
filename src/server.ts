@@ -57,6 +57,7 @@ const start = async () => {
     console.log(`Server listening on ${host}:${port}`);
   } catch (err) {
     server.log.error(err);
+    console.log(`Server error, exiting: ${err}`);
     process.exit(1);
   }
 };

@@ -26,7 +26,10 @@ server.register(characterRoutes, { prefix: "/api/characters" });
 
 const start = async () => {
   try {
-    await server.listen({ port: 3001 });
+    const port = Number(process.env.PORT) || 3001;
+    const host = '0.0.0.0'; // Listen on all network interfaces
+    
+    await server.listen({ port, host });
   } catch (err) {
     server.log.error(err);
     process.exit(1);

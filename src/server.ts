@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
 import cors from "@fastify/cors";
+import { migrate } from "drizzle-orm/node-postgres/migrator";
 
 import { characterRoutes } from "./routes/character";
 import { db } from "./db";
@@ -52,6 +53,10 @@ const start = async () => {
       console.error("Make sure DATABASE_URL is correct in Railway variables");
       process.exit(1);
     }
+
+      // Run migrations against the database
+    await migrate(db, { migrationsFolder: "./db/migrations" });
+    console.log("Migrations successful!");
     
     await server.listen({ port, host });
     console.log(`Server listening on ${host}:${port}`);

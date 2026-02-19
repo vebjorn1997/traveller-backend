@@ -18,7 +18,7 @@ ARG DATABASE_URL
 ENV DATABASE_URL=$DATABASE_URL
 
 # Run migrations against the database (requires DATABASE_URL at build time)
-RUN npx drizzle-kit migrate
+RUN npx tsx drizzle-kit migrate
 
 # Production image
 FROM base AS runner

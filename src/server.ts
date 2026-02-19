@@ -30,6 +30,7 @@ const start = async () => {
     const host = '0.0.0.0'; // Listen on all network interfaces
     
     await server.listen({ port, host });
+    console.log(`Server listening on ${host}:${port}`);
   } catch (err) {
     server.log.error(err);
     process.exit(1);

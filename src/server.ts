@@ -11,7 +11,10 @@ const server = Fastify({
 });
 
 server.register(cors, {
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "https://traveller-frontend-production.up.railway.app"
+  ],
   credentials: true,
 });
 

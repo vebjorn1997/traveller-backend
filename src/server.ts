@@ -54,9 +54,11 @@ const start = async () => {
       process.exit(1);
     }
 
-    // Run migrations against the database
-    await migrate(db, { migrationsFolder: "./src/db/migrations" });
-    console.log("Migrations successful!");
+    // Only run migrations in production
+    if (process.env.NODE_ENV === "production") {
+      await migrate(db, { migrationsFolder: "./src/db/migrations" });
+      console.log("Migrations successful!");
+    }
     
     await server.listen({ port, host });
     console.log(`Server listening on ${host}:${port}`);

@@ -54,7 +54,7 @@ const start = async () => {
       process.exit(1);
     }
 
-    // Only run migrations in production
+    // Only run migrations in production, needed for Railway deployment
     if (process.env.NODE_ENV === "production") {
       await migrate(db, { migrationsFolder: "./src/db/migrations" });
       console.log("Migrations successful!");

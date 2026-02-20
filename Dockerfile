@@ -10,7 +10,7 @@ RUN npm ci
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/src/db/migrations ./src/db/migrations/
+COPY --from=deps /app/src/db/migrations ./src/db/migrations
 COPY . .
 RUN npm run build
 

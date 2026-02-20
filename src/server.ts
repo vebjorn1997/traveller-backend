@@ -54,8 +54,8 @@ const start = async () => {
       process.exit(1);
     }
 
-      // Run migrations against the database
-    await migrate(db, { migrationsFolder: "./db/migrations" });
+    // Run migrations against the database
+    await migrate(db, { migrationsFolder: "./src/db/migrations" });
     console.log("Migrations successful!");
     
     await server.listen({ port, host });
